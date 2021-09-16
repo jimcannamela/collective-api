@@ -10,9 +10,21 @@ const options = {
     },
     servers: [
       {url:'http://localhost:8082/api'}
+    ],
+    tags: [
+      {
+        name: "Posts"
+      },
+      {
+        name: "Comments",
+        description: "User comments on posts."
+      }
     ]
   },
-  apis: []
+  apis: [
+    './app/comments/routes.js',
+    './app/posts/routes.js'
+  ]
 };
 
 const docs = swaggerJsdoc(options);
