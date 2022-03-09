@@ -18,12 +18,17 @@ const options = {
       {
         name: "Comments",
         description: "User comments on posts."
+      },
+      {
+        name: "Todos",
+        description: "Todo list"
       }
     ]
   },
   apis: [
     './app/comments/routes.js',
-    './app/posts/routes.js'
+    './app/posts/routes.js',
+    './app/todos/routes.js'
   ]
 };
 

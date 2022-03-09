@@ -2,6 +2,39 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../lib/db')
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Todo:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           format: int32
+ *         name:
+ *           type: string
+ *         complete:
+ *           type: boolean
+ */
+
+/**
+ * @openapi
+ * /todos:
+ *   get:
+ *     tags:
+ *       - Todos
+ *     summary: Get all todos.
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref : '#/components/schemas/Todo'
+ */
 router.get('/todos', (req, res) => {
     const todos = db.todos.findAll();
     res.json(todos);
