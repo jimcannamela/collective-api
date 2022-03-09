@@ -68,6 +68,27 @@ router.get('/todos/:id', (req, res) => {
     res.json(todo);
 })
 
+/**
+ * @openapi
+ * /todos:
+ *   post:
+ *     tags:
+ *       - Todos
+ *     summary: Add a todo.
+ *     requestBody:
+ *       description: 'The todo to add.'
+ *       content:
+ *         application/json:
+ *            schema:
+ *               $ref : '#/components/schemas/Todo'
+ *     responses:
+ *       200:
+ *         description: Success. The newly created todo will be returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref : '#/components/schemas/Todo'
+ */
 router.post('/todos', (req, res) => {
     const newTodo = db.todos.insert({
         name: req.body.name,

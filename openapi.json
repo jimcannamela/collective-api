@@ -320,6 +320,34 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Add a todo.",
+        "requestBody": {
+          "description": "The todo to add.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success. The newly created todo will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/todos/{todoId}": {
