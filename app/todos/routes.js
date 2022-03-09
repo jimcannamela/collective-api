@@ -40,6 +40,29 @@ router.get('/todos', (req, res) => {
     res.json(todos);
 })
 
+/**
+ * @openapi
+ * /todos/{todoId}:
+ *   get:
+ *     tags:
+ *       - Todos
+ *     summary: Get a todo.
+ *     parameters:
+ *       - name: todoId
+ *         in: path
+ *         description: Id of todo to retrive.
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref : '#/components/schemas/Todo'
+ */
 router.get('/todos/:id', (req, res) => {
     const todo = db.todos.find(req.params.id)
     res.json(todo);
