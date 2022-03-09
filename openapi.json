@@ -380,6 +380,69 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Update a todo.",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "Id of todo to update.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The todo updates.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success. The updated todo will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Delete a todo.",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "Id of todo to delete.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete was successful."
+          }
+        }
       }
     }
   },

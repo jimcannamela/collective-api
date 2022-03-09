@@ -97,6 +97,35 @@ router.post('/todos', (req, res) => {
     res.json(newTodo)
 })
 
+/**
+ * @openapi
+ * /todos/{todoId}:
+ *   patch:
+ *     tags:
+ *       - Todos
+ *     summary: Update a todo.
+ *     parameters:
+ *       - name: todoId
+ *         in: path
+ *         description: Id of todo to update.
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *     requestBody:
+ *       description: 'The todo updates.'
+ *       content:
+ *         application/json:
+ *            schema:
+ *               $ref : '#/components/schemas/Todo'
+ *     responses:
+ *       200:
+ *         description: Success. The updated todo will be returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref : '#/components/schemas/Todo'
+ */
 router.patch('/todos/:id', (req, res) => {
     const todo = db.todos.find(req.params.id)
     if(req.body.name) {
@@ -108,6 +137,25 @@ router.patch('/todos/:id', (req, res) => {
     res.json(todo)
 })
 
+/**
+ * @openapi
+ * /todos/{todoId}:
+ *   delete:
+ *     tags:
+ *       - Todos
+ *     summary: Delete a todo.
+ *     parameters:
+ *       - name: todoId
+ *         in: path
+ *         description: Id of todo to delete.
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *     responses:
+ *       200:
+ *         description: Delete was successful.
+ */
 router.delete('/todos/:id', (req, res) => {
     const todo = db.todos.find(req.params.id)
     if(todo) {
