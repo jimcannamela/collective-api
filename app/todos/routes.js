@@ -9,6 +9,13 @@ const db = require('../../lib/db')
  *     Todo:
  *       type: object
  *       properties:
+ *         name:
+ *           type: string
+ *         complete:
+ *           type: boolean
+ *     SavedTodo:
+ *       type: object
+ *       properties:
  *         id:
  *           type: integer
  *           format: int32
@@ -33,7 +40,7 @@ const db = require('../../lib/db')
  *             schema:
  *               type: array
  *               items:
- *                 $ref : '#/components/schemas/Todo'
+ *                 $ref : '#/components/schemas/SavedTodo'
  */
 router.get('/todos', (req, res) => {
     const todos = db.todos.findAll();
@@ -61,7 +68,7 @@ router.get('/todos', (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               $ref : '#/components/schemas/Todo'
+ *               $ref : '#/components/schemas/SavedTodo'
  */
 router.get('/todos/:id', (req, res) => {
     const todo = db.todos.find(req.params.id)
@@ -87,7 +94,7 @@ router.get('/todos/:id', (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               $ref : '#/components/schemas/Todo'
+ *               $ref : '#/components/schemas/SavedTodo'
  */
 router.post('/todos', (req, res) => {
     const newTodo = db.todos.insert({
@@ -124,7 +131,7 @@ router.post('/todos', (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               $ref : '#/components/schemas/Todo'
+ *               $ref : '#/components/schemas/SavedTodo'
  */
 router.patch('/todos/:id', (req, res) => {
     const todo = db.todos.find(req.params.id)
