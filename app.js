@@ -3,6 +3,8 @@ const path = require('path')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const swaggerUi = require('swagger-ui-express')
+const apiDocs = require(`./openapi-gen`)
 
 const index = require('./app/index')
 const people = require('./app/people/routes')
@@ -15,6 +17,7 @@ const comments = require('./app/comments/routes')
 const cameras = require('./app/cameras/routes')
 const books = require('./app/books/routes')
 const movies = require('./app/movies/routes')
+const todos = require('./app/todos/routes')
 
 const app = express()
 
@@ -24,6 +27,7 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
+app.use('/openapi', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 app.use((req, res, next) => {
   if (req.query.delay) return setTimeout(next, parseInt(req.query.delay, 10))
@@ -40,6 +44,7 @@ app.use('/api', comments)
 app.use('/api', cameras)
 app.use('/api', books)
 app.use('/api', movies)
+app.use('/api', todos)
 app.get('/', (req, res, next) => res.redirect('/api'))
 
 app.use(function(req, res, next) {

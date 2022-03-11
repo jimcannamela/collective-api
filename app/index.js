@@ -20,6 +20,9 @@ router.get('/', (req, res, next) => {
       items: {
         href: linker(req, '/api/items')
       },
+      items: {
+        href: linker(req, '/api/todos')
+      },
     }
   })
 })

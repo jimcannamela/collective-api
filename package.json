@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "NODE_ENV=test mocha --recursive test"
+    "test": "NODE_ENV=test mocha --recursive test",
+    "openapi-generate": "node openapi-gen.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -12,7 +13,9 @@
     "debug": "^4.1.0",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
