@@ -11,7 +11,7 @@ This server stores everything in-memory, so every time you restart the server, y
 ## Install
 
 ```bash
-git clone https://github.com/gSchool/collective-api.git
+git clone <project-url>
 cd collective-api
 npm install
 npm start
